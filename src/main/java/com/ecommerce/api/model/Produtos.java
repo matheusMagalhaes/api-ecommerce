@@ -26,7 +26,7 @@ public class Produtos {
     @Column(name = "DESCRICAO")
     @NotNull(message = "Description cannot be null")
     @NotBlank
-    private String description;
+    private String descricao;
 
     @Lob
     @Column(name = "IMG")
