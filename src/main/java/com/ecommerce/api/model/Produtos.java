@@ -28,10 +28,11 @@ public class Produtos {
     @NotBlank
     private String description;
 
+    @Lob
     @Column(name = "IMG")
     @NotNull(message = "Image cannot be null")
     @NotEmpty
-    private List<Byte> img;
+    private Byte[] img;
 
     @Column(name = "PRECO")
     @NotNull(message = "Price cannot be null")
