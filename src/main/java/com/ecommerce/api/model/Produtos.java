@@ -16,7 +16,7 @@ public class Produtos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
-    private Long id;
+    private Integer id;
 
     @Column(name = "NOME")
     @NotNull(message = "Name cannot be null")
@@ -32,7 +32,7 @@ public class Produtos {
     @Column(name = "IMG")
     @NotNull(message = "Image cannot be null")
     @NotEmpty
-    private Byte[] img;
+    private byte[] img;
 
     @Column(name = "PRECO")
     @NotNull(message = "Price cannot be null")
