@@ -17,7 +17,6 @@ public class ProdutosServiceImpl implements ProdutosService {
 
     @Autowired
     ProdutosRepository repository;
-
     @Autowired
     ModelMapper mapper;
 
@@ -29,8 +28,11 @@ public class ProdutosServiceImpl implements ProdutosService {
     @Override
     public Produtos addProduto(ProdutoDTO produto) {
         Produtos prd = new Produtos();
+        Utils util = new Utils();
         try {
-            this.mapper.map(produto, prd.getClass());
+            util.convertImgToByteArray(produto.getImg());
+            this.mapper.map(produto, prd);
+
             return this.repository.save(prd);
         }catch (Exception e){
             throw new RuntimeException(e);
