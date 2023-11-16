@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @Data
 public class ProdutoDTO {
-    private Long id;
+    private Integer id;
     private String nome;
     private String descricao;
     private String img;

@@ -12,5 +12,7 @@ public interface ProdutosService {
     List<Produtos> findAll();
 
 
-    Produtos addProduto(ProdutoDTO produto) throws IOException;
+    Produtos addProduto(ProdutoDTO produto);
+
+    void updateAddedProduct(ProdutoDTO produto);
 }
