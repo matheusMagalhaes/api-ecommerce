@@ -41,17 +41,24 @@ public class ProdutosServiceImpl implements ProdutosService {
 
     @Override
     public void updateAddedProduct(ProdutoDTO produto) {
-        List<Produtos> listaProduto = this.repository.findAllById(Collections.singleton(produto.getId()));
-         listaProduto.stream().filter(prd -> produto.getId() == prd.getId()).findFirst().ifPresent(prd ->{
-             prd.setNome(produto.getNome());
-             prd.setDescricao(produto.getDescricao());
-             prd.setPreco(produto.getPreco());
-             try {
-               prd.setImg(Utils.convertImgToByteArray(produto.getImg()));
-             }catch (Exception e){
-                throw new RuntimeException("Failed to save image");
-             }
-         });
+        Boolean exists  = this.repository.existsById(produto.getId());
+
+        if (exists){
+            List<Produtos> listaProduto = this.repository.findAllById(Collections.singleton(produto.getId()));
+            listaProduto.stream().filter(prd -> produto.getId() == prd.getId()).findFirst().ifPresent(prd ->{
+                prd.setNome(produto.getNome());
+                prd.setDescricao(produto.getDescricao());
+                prd.setPreco(produto.getPreco());
+                try {
+                    prd.setImg(Utils.convertImgToByteArray(produto.getImg()));
+                }catch (Exception e){
+                    throw new RuntimeException("Failed to save image");
+                }
+            });
+        }else{
+            throw new RuntimeException("No product found!");
+        }
+
     }
 
 }

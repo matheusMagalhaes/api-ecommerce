@@ -23,5 +23,4 @@ public class ResponseHandler {
             }
             return new ResponseEntity<>(responseMap, status);
         }
-
 }
