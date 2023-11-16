@@ -1,6 +1,7 @@
 package com.ecommerce.api.controller;
 
 import com.ecommerce.api.handlers.ResponseHandler;
+import com.ecommerce.api.model.DTO.ProdutoDTO;
 import com.ecommerce.api.model.Produtos;
 
 import com.ecommerce.api.service.ProdutosService;
@@ -28,7 +29,7 @@ public class ProductController {
     }
 
     @PostMapping("add-new-product")
-    ResponseEntity<Object> addProduct(@RequestBody @Valid Produtos produto){
+    ResponseEntity<Object> addProduct(@RequestBody @Valid ProdutoDTO produto){
         try {
             Produtos addProduto = service.addProduto(produto);
             return ResponseHandler.handlerResponse("Succefully added", HttpStatus.OK, addProduto);
