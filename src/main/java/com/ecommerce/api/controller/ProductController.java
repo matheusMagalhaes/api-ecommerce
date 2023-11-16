@@ -21,8 +21,14 @@ public class ProductController {
     ProdutosService service;
 
     @RequestMapping("findAll")
-    List<Produtos> findAll(){
-        return this.service.findAll();
+    ResponseEntity<Object> findAll(){
+        try {
+            List<Produtos> produto  = this.service.findAll();
+            return ResponseHandler.handlerResponse("All products", HttpStatus.OK, produto);
+        }catch (Exception e){
+            return ResponseHandler.handlerResponse("Error", HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+
     }
 
     @PostMapping("add-new-product")
