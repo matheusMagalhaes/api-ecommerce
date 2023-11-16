@@ -8,4 +8,7 @@ import java.util.List;
 public interface ProdutosService {
 
     List<Produtos> findAll();
+
+
+    Produtos addProduto(Produtos produto);
 }
