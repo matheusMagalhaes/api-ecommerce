@@ -41,7 +41,7 @@ public class ProductController {
         }
     }
 
-    @PutMapping("prodtuct-update")
+    @PutMapping("product-update")
     void updateAddedProduct(@RequestParam @Valid ProdutoDTO produto){
         this.service.updateAddedProduct(produto);
     }
